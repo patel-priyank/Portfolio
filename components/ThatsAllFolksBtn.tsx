@@ -10,9 +10,12 @@ const ThatsAllFolksBtn = () => {
     const { default: confetti } = await import('canvas-confetti');
 
     confetti({
-      particleCount: 250,
-      spread: 150,
+      particleCount: Math.random() * 100 + 150,
+      spread: Math.random() * 90 + 180,
+      startVelocity: Math.random() * 10 + 25,
       scalar: 0.75,
+      ticks: 320,
+      drift: Math.random() * 3 - 1.5,
       origin: { x: x / window.innerWidth, y: y / window.innerHeight }
     });
   };
