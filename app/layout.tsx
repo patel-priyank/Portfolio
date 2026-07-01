@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Arimo, Playfair_Display, Source_Code_Pro } from 'next/font/google';
 
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { getThemes } from '@/actions/themes.actions';
 
@@ -57,6 +58,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[24px_24px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
         <ThemeProvider themes={themes}>{children}</ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
