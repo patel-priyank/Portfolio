@@ -6,7 +6,7 @@ const HelloBtn = () => {
   };
 
   return (
-    <button className="cursor-pointer text-xl rounded-sm" onClick={handleClick}>
+    <button aria-label="Scroll to top" className="cursor-pointer text-xl rounded-sm" onClick={handleClick}>
       Hello!
     </button>
   );
