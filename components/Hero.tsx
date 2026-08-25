@@ -1,4 +1,4 @@
-import { BracketsCurlyIcon, BrainIcon, CalendarCheckIcon, StackIcon } from '@phosphor-icons/react/dist/ssr';
+import { BracketsCurlyIcon, CalendarCheckIcon, RocketIcon, StackIcon } from '@phosphor-icons/react/dist/ssr';
 
 const highlights = [
   {
@@ -14,8 +14,8 @@ const highlights = [
     text: '6 years of experience'
   },
   {
-    icon: <BrainIcon weight="bold" />,
-    text: 'Design-minded'
+    icon: <RocketIcon weight="bold" />,
+    text: 'Performance-focused'
   }
 ];
 
