@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Arimo, Playfair_Display, Source_Code_Pro } from 'next/font/google';
+import { Arimo, Chiron_Sung_HK, Source_Code_Pro } from 'next/font/google';
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -20,8 +20,8 @@ const arimo = Arimo({
   subsets: ['latin']
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: '--font-playfair-display',
+const chironSungHK = Chiron_Sung_HK({
+  variable: '--font-chiron-sung-hk',
   subsets: ['latin']
 });
 
@@ -54,7 +54,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const themes = await getThemes();
 
   return (
-    <html lang="en" className={`${arimo.variable} ${playfairDisplay.variable} ${sourceCodePro.variable}`}>
+    <html lang="en" className={`${arimo.variable} ${chironSungHK.variable} ${sourceCodePro.variable}`}>
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[24px_24px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
         <ThemeProvider themes={themes}>{children}</ThemeProvider>
         <Analytics />
