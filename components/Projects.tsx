@@ -5,8 +5,8 @@ import { getProjects } from '@/actions/projects.actions';
 
 import { getPhosphorIcon } from '@/lib/icons';
 
-const Projects = async () => {
-  const projects = await getProjects();
+const Projects = async ({ params }: { params: { featured: boolean } }) => {
+  const projects = await getProjects(params.featured);
 
   return (
     <>

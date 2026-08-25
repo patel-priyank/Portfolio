@@ -2,7 +2,7 @@
 
 import { sql } from '@/lib/db';
 
-export const getProjects = async () => {
+export const getProjects = async (featured: boolean) => {
   return await sql.query(`
     SELECT
       projects.title,
@@ -18,6 +18,7 @@ export const getProjects = async () => {
       ) AS links
     FROM projects
     LEFT JOIN project_links ON project_links.project_id = projects.id
+    ${featured ? 'WHERE projects.is_featured' : ''}
     GROUP BY projects.id, projects.title, projects.description, projects.image_url, projects.under_dev
     ORDER BY projects.sequence
   `);

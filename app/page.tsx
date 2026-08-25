@@ -51,7 +51,7 @@ const Home = () => {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Projects />
+            <Projects params={{ featured: true }} />
           </div>
         </section>
 
