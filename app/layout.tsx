@@ -4,6 +4,10 @@ import { Arimo, Chiron_Sung_HK, Source_Code_Pro } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
+import Loader from '@/components/Loader';
+import Navbar from '@/components/Navbar';
+import ThemeDialog from '@/components/ThemeDialog';
+
 import { getThemes } from '@/actions/themes.actions';
 
 import ThemeProvider from '@/context/ThemeProvider';
@@ -56,7 +60,20 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html lang="en" className={`${arimo.variable} ${chironSungHK.variable} ${sourceCodePro.variable}`}>
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[24px_24px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
-        <ThemeProvider themes={themes}>{children}</ThemeProvider>
+        <ThemeProvider themes={themes}>
+          <noscript className="fixed inset-0 p-4 grid place-items-center bg-[#1a1a1a] text-[#fafafa] text-center text-balance z-1300">
+            Enable JavaScript to view this site.
+          </noscript>
+
+          <Loader />
+
+          <Navbar />
+
+          {children}
+
+          <ThemeDialog />
+        </ThemeProvider>
+
         <Analytics />
         <SpeedInsights />
       </body>

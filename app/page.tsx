@@ -3,26 +3,15 @@ import Image from 'next/image';
 import Contacts from '@/components/Contacts';
 import Experience from '@/components/Experience';
 import Hero from '@/components/Hero';
-import Loader from '@/components/Loader';
-import Navbar from '@/components/Navbar';
 import Projects from '@/components/Projects';
 import SectionBtn from '@/components/SectionBtn';
 import Skills from '@/components/Skills';
 import Socials from '@/components/Socials';
 import ThatsAllFolksBtn from '@/components/ThatsAllFolksBtn';
-import ThemeDialog from '@/components/ThemeDialog';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
-      <noscript className="fixed inset-0 p-4 grid place-items-center bg-[#1a1a1a] text-[#fafafa] text-center text-balance z-1300">
-        Enable JavaScript to view this site.
-      </noscript>
-
-      <Loader />
-
-      <Navbar />
-
       <main className="max-w-5xl mx-auto p-4 pb-20 flex flex-col gap-20">
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
           <Image
@@ -104,11 +93,9 @@ const Home = () => {
         </section>
       </main>
 
-      <ThemeDialog />
-
       <SectionBtn />
     </>
   );
 };
 
-export default Home;
+export default HomePage;
