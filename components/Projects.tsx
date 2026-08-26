@@ -22,7 +22,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
               className="w-full object-cover rounded-md aspect-3/2 md:aspect-2/1 select-none"
             />
 
-            {project.under_dev && (
+            {project.under_development && (
               <span className="absolute top-2 right-2 bg-(--bg-alt) text-(--text-muted) text-sm rounded-sm px-2 py-1 pointer-events-none border border-(--text-muted) select-none">
                 Under development
               </span>
