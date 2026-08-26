@@ -1,4 +1,5 @@
-import HelloBtn from './HelloBtn';
+import Link from 'next/link';
+
 import NavHeightSetter from './NavHeightSetter';
 import ThemeBtn from './ThemeBtn';
 import ThemeToast from './ThemeToast';
@@ -9,7 +10,9 @@ const Navbar = () => {
       <NavHeightSetter />
 
       <div className="max-w-5xl mx-auto p-4 flex items-center justify-between">
-        <HelloBtn />
+        <Link href="/" aria-label="Scroll to top" className="cursor-pointer text-xl rounded-sm">
+          Hello!
+        </Link>
 
         <div className="relative">
           <ThemeBtn />
