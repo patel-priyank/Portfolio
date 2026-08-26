@@ -17,7 +17,7 @@ import './globals.css';
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 const title = 'Priyank Patel';
-const description = 'Full stack developer based in the UK. I build end-to-end web applications.';
+const description = 'Full stack developer. I build end-to-end web applications.';
 
 const arimo = Arimo({
   variable: '--font-arimo',
