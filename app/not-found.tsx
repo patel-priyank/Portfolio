@@ -13,10 +13,7 @@ const NotFound = () => {
         It’s okay, we all get a bit curious. But there’s nothing to be found here, trust me.
       </p>
 
-      <p className="text-(--text-muted) text-center text-balance text-xs">
-        Yes, that is exactly someone would say when they’ve hidden something here. But this is a portfolio, not a
-        treasure hunt.
-      </p>
+      <p className="text-(--text-muted) text-center text-balance text-xs">This is a portfolio, not a treasure hunt.</p>
 
       <Link
         href="/"
