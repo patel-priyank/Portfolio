@@ -16,6 +16,7 @@ const Skills = async () => {
             className="bg-(--bg-alt) rounded-lg grid grid-rows-subgrid row-span-3 gap-4 p-4 justify-items-center"
           >
             <Icon className="text-4xl text-(--text-muted) mt-1" />
+
             <h3 className="text-lg text-center font-semibold line-clamp-2">{category.title}</h3>
 
             <div className="flex flex-col gap-3 w-full overflow-hidden mt-1">

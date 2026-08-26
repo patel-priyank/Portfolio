@@ -9,7 +9,7 @@ const ProjectsPage = () => {
       <section className="flex flex-col gap-4">
         <h1 className="text-2xl font-bold">Projects</h1>
 
-        <p className="text-(--text-muted) line-clamp-5">
+        <p className="text-(--text-muted)">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias a amet eveniet asperiores omnis quae
           laudantium voluptates molestias natus tempore officia, quia numquam quod quibusdam deserunt repudiandae nisi
           velit magnam doloremque corrupti illum esse! Deleniti doloremque voluptates, fuga inventore sunt, repudiandae

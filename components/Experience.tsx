@@ -20,6 +20,7 @@ const Experience = async () => {
           </span>
 
           <h3 className="text-lg font-semibold line-clamp-2">{role.company}</h3>
+
           <p className="text-(--text-muted) truncate">{role.job_title}</p>
 
           <span className="text-(--text-muted) text-sm">
