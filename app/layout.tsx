@@ -58,7 +58,11 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   const themes = await getThemes();
 
   return (
-    <html lang="en" className={`${arimo.variable} ${chironSungHK.variable} ${sourceCodePro.variable}`}>
+    <html
+      lang="en"
+      className={`${arimo.variable} ${chironSungHK.variable} ${sourceCodePro.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[24px_24px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
         <ThemeProvider themes={themes}>
           <noscript className="fixed inset-0 p-4 grid place-items-center bg-[#1a1a1a] text-[#fafafa] text-center text-balance z-1300">
