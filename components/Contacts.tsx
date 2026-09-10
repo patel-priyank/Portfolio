@@ -18,9 +18,9 @@ const Contacts = async () => {
             href={contact.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-(--bg-alt) text-(--accent) rounded-lg select-none flex flex-col gap-3 items-start justify-end p-4 h-40 border border-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+            className="bg-(--bg-alt) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end font-medium p-4 h-40 border-2 border-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
           >
-            <Icon className="text-2xl" />
+            <Icon className="text-2xl" weight="bold" />
             {contact.label}
           </Link>
         );
