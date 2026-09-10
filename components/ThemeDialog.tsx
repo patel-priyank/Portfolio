@@ -115,7 +115,7 @@ const ThemeDialog = () => {
     >
       <div
         ref={containerRef}
-        className="themes-container overflow-auto fixed left-auto right-0 w-full max-w-sm h-full bg-(--bg) bg-center bg-fixed bg-size-[32px_32px] bg-[linear-gradient(to_right,var(--bg-alt)_1px,transparent_1px),linear-gradient(to_bottom,var(--bg-alt)_1px,transparent_1px)] text-(--text)"
+        className="themes-container overflow-auto fixed left-auto right-0 w-full max-w-sm h-full bg-(--bg) bg-center bg-fixed bg-size-[24px_24px] bg-[linear-gradient(to_right,var(--bg-alt)_2px,transparent_2px),linear-gradient(to_bottom,var(--bg-alt)_2px,transparent_2px)] text-(--text)"
       >
         <div className="sticky top-0 z-1100 bg-(--bg-alt) border-b-4 border-(--bg)">
           <div className="p-4 flex items-center justify-between">
