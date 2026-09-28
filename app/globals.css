@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: var(--font-arimo), sans-serif;
-  --font-serif: var(--font-fraunces), serif;
+  --font-serif: var(--font-domine), serif;
   --font-mono: var(--font-source-code-pro), monospace;
 
   --default-transition-duration: 500ms;
