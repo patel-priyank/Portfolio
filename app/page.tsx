@@ -21,11 +21,11 @@ const HomePage = () => {
             height={512}
             preload
             sizes="320px"
-            className="w-full mx-auto object-cover max-w-xs sm:h-80 rounded-xl aspect-square sm:aspect-auto select-none"
+            className="border-2 border-(--text-muted) w-full mx-auto object-cover max-w-xs sm:h-80 rounded-3xl aspect-square sm:aspect-auto select-none"
           />
 
           <div className="sm:col-span-2 flex flex-col gap-4 items-center sm:items-start">
-            <h1 className="text-2xl font-bold">Priyank Patel</h1>
+            <h1 className="text-3xl font-bold">Priyank Patel</h1>
 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 place-items-center">
               <Hero />
@@ -33,56 +33,36 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold flex gap-4 items-center">
-            <span>I’ve built some things</span>
-            <div className="grow border-b border-dashed border-(--text-muted)"></div>
-          </h2>
-
+        <section className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center text-balance">I’ve built some things</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Projects params={{ featured: true }} />
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold flex gap-4 items-center">
-            <span>Where I’ve worked</span>
-            <div className="grow border-b border-dashed border-(--text-muted)"></div>
-          </h2>
-
+        <section className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center text-balance">Where I’ve worked</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Experience />
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold flex gap-4 items-center">
-            <span>I know a thing or two</span>
-            <div className="grow border-b border-dashed border-(--text-muted)"></div>
-          </h2>
-
+        <section className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center text-balance">I know a thing or two</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <Skills />
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold flex gap-4 items-center">
-            <span>More of what I do</span>
-            <div className="grow border-b border-dashed border-(--text-muted)"></div>
-          </h2>
-
+        <section className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center text-balance">More of what I do</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Socials />
           </div>
         </section>
 
-        <section className="flex flex-col gap-4">
-          <h2 className="text-xl font-bold flex gap-4 items-center">
-            <span>Reach out to me</span>
-            <div className="grow border-b border-dashed border-(--text-muted)"></div>
-          </h2>
-
+        <section className="flex flex-col gap-6">
+          <h2 className="text-2xl font-semibold text-center text-balance">Reach out to me</h2>
           <div className="grid grid-cols-2 gap-4">
             <Contacts />
           </div>

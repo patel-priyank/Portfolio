@@ -99,9 +99,9 @@ const ThemeToast = () => {
     >
       {message && (
         <div className="relative w-full">
-          <div className="absolute top-full inset-x-0 mx-auto w-0 h-0 [border-left:6px_solid_transparent] [border-right:6px_solid_transparent] [border-bottom:9px_solid_var(--text-muted)]" />
+          <div className="absolute top-full inset-x-0 mx-auto w-0 h-0 [border-left:8px_solid_transparent] [border-right:8px_solid_transparent] [border-bottom:12px_solid_var(--text-muted)]" />
 
-          <span className="absolute top-2.25 right-0 min-w-full w-max max-w-[calc(75vw-32px)] bg-(--text-muted) text-(--bg) px-4 py-2 rounded-md text-sm">
+          <span className="absolute top-2.5 right-0 min-w-full w-max max-w-[calc(75vw-32px)] bg-(--text-muted) text-(--bg) px-4 py-2 rounded-lg border-2 border-(--text-muted)">
             {message}
           </span>
         </div>

@@ -11,7 +11,7 @@
 @layer base {
   * {
     &:focus-visible {
-      outline: 1px solid var(--accent);
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
@@ -85,12 +85,12 @@ main * {
   }
 
   label {
-    &:has(input:checked) {
-      border-radius: 32px;
+    &:has(input:checked) svg {
+      display: block;
     }
 
     &:has(input:focus-visible) {
-      outline: 1px solid var(--accent);
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
   }

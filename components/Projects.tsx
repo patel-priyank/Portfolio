@@ -11,29 +11,32 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
   return (
     <>
       {projects.map((project, index) => (
-        <div key={index} className="bg-(--bg-alt) rounded-lg grid grid-rows-subgrid row-span-4 gap-4 p-4">
-          <div className="relative">
+        <div
+          key={index}
+          className="border-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
+        >
+          <div className="relative mb-1.5">
             <Image
               src={project.image_url}
               alt=""
               width={512}
               height={512}
               sizes="(min-width: 640px) 456px, 100vw"
-              className="w-full object-cover rounded-md select-none"
+              className="w-full object-cover rounded-lg select-none"
             />
 
             {project.under_development && (
-              <span className="absolute top-2 right-2 bg-(--bg-alt) text-(--text-muted) text-sm rounded-sm px-2 py-1 pointer-events-none border border-(--text-muted) select-none">
+              <span className="absolute top-4 right-4 bg-(--bg-alt) text-(--text-muted) text-sm rounded-md px-2 py-1 pointer-events-none border-2 border-(--text-muted) select-none font-medium">
                 Under development
               </span>
             )}
           </div>
 
-          <h3 className="text-lg font-semibold line-clamp-2">{project.title}</h3>
+          <h3 className="text-xl font-semibold line-clamp-2">{project.title}</h3>
 
-          <p className="text-(--text-muted) line-clamp-5">{project.description}</p>
+          <p className="text-lg text-(--text-muted) line-clamp-5">{project.description}</p>
 
-          <div className="flex gap-2 flex-wrap items-start">
+          <div className="flex gap-2 flex-wrap items-start mt-1.5">
             {project.links.map((link: { url: string; icon: string; label: string }, index: number) => {
               const Icon = getPhosphorIcon[link.icon];
 
@@ -43,9 +46,9 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2 items-center px-3 py-1 border border-(--accent) rounded-md select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+                  className="flex gap-2 items-center px-3 py-1.5 border-2 border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
                 >
-                  {Icon && <Icon weight="bold" />}
+                  {Icon && <Icon className="shrink-0" weight="bold" />}
                   {link.label}
                 </Link>
               );

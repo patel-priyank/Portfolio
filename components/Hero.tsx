@@ -25,10 +25,10 @@ const Hero = () => {
       {highlights.map((highlight, index) => (
         <div
           key={index}
-          className="w-full flex flex-col gap-2 max-w-3xs sm:max-w-none bg-(--bg-alt) rounded-lg p-4 text-(--text-muted)"
+          className="border-2 border-(--text-muted) w-full flex flex-col gap-2 max-w-3xs sm:max-w-none bg-(--bg-alt) rounded-2xl p-4 text-(--text-muted)"
         >
-          {highlight.icon}
-          <span className="text-sm truncate">{highlight.text}</span>
+          <span className="text-lg">{highlight.icon}</span>
+          <span className="truncate font-medium">{highlight.text}</span>
         </div>
       ))}
     </>

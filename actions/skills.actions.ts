@@ -8,11 +8,13 @@ export const getSkillCategories = async () => {
       skill_categories.icon,
       skill_categories.title,
       COALESCE(
-        json_agg(skills.name ORDER BY skills.sequence) FILTER (WHERE skills.id IS NOT NULL),
+        json_agg(skills.name ORDER BY skills.sequence)
+        FILTER (WHERE skills.id IS NOT NULL AND skills.is_archived = false),
         '[]'
       ) AS skills
     FROM skill_categories
     LEFT JOIN skills ON skills.skill_category_id = skill_categories.id
+    WHERE skill_categories.is_archived = false
     GROUP BY skill_categories.id, skill_categories.icon, skill_categories.title
     ORDER BY skill_categories.sequence
   `);

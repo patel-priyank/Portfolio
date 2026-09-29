@@ -7,9 +7,9 @@ const ProjectsPage = () => {
       <Breadcrumbs params={{ crumbs: [{ url: '/', label: 'Home' }], current: 'Projects' }} />
 
       <section className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Projects</h1>
+        <h1 className="text-3xl font-semibold">Projects</h1>
 
-        <p className="text-(--text-muted)">
+        <p className="text-lg text-(--text-muted)">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias a amet eveniet asperiores omnis quae
           laudantium voluptates molestias natus tempore officia, quia numquam quod quibusdam deserunt repudiandae nisi
           velit magnam doloremque corrupti illum esse! Deleniti doloremque voluptates, fuga inventore sunt, repudiandae
