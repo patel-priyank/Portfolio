@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Arimo, Domine, Source_Code_Pro } from 'next/font/google';
+import { Arimo, Noto_Serif, Source_Code_Pro } from 'next/font/google';
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -24,8 +24,8 @@ const arimo = Arimo({
   subsets: ['latin']
 });
 
-const domine = Domine({
-  variable: '--font-domine',
+const notoSerif = Noto_Serif({
+  variable: '--font-noto-serif',
   subsets: ['latin']
 });
 
@@ -60,7 +60,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html
       lang="en"
-      className={`${arimo.variable} ${domine.variable} ${sourceCodePro.variable}`}
+      className={`${arimo.variable} ${notoSerif.variable} ${sourceCodePro.variable}`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[16px_16px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
