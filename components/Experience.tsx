@@ -16,7 +16,7 @@ const Experience = async () => {
       {experience.map((role, index) => (
         <div
           key={index}
-          className="border-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
+          className="border border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
         >
           <span aria-hidden="true" className="text-5xl font-mono tracking-tighter text-(--bg) select-none">
             {new Date(role.start_date).getFullYear()}
@@ -35,7 +35,7 @@ const Experience = async () => {
               href={role.company_linkedin_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2 items-center px-3 py-1.5 border-2 border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+              className="flex gap-2 items-center px-3 py-1.5 border border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
             >
               <BuildingsIcon className="shrink-0" weight="bold" />
               View on LinkedIn

@@ -13,7 +13,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
       {projects.map((project, index) => (
         <div
           key={index}
-          className="border-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
+          className="border border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
         >
           <div className="relative mb-1.5">
             <Image
@@ -26,7 +26,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
             />
 
             {project.under_development && (
-              <span className="absolute top-4 right-4 bg-(--bg-alt) text-(--text-muted) text-sm rounded-md px-2 py-1 pointer-events-none border-2 border-(--text-muted) select-none font-medium">
+              <span className="absolute top-4 right-4 bg-(--bg-alt) text-(--text-muted) text-sm rounded-md px-2 py-1 pointer-events-none border border-(--text-muted) select-none font-medium">
                 Under development
               </span>
             )}
@@ -46,7 +46,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2 items-center px-3 py-1.5 border-2 border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+                  className="flex gap-2 items-center px-3 py-1.5 border border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
                 >
                   {Icon && <Icon className="shrink-0" weight="bold" />}
                   {link.label}

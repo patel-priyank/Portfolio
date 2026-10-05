@@ -124,7 +124,7 @@ const ThemeDialog = () => {
             <button
               onClick={close}
               aria-label="Close theme drawer"
-              className="cursor-pointer flex gap-2 items-center p-2.5 border-2 border-(--accent) rounded-lg select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+              className="cursor-pointer flex gap-2 items-center p-2.5 border border-(--accent) rounded-lg select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
             >
               <XIcon weight="bold" />
             </button>
@@ -135,7 +135,7 @@ const ThemeDialog = () => {
           {themes.map((theme, index) => (
             <label
               key={index}
-              className="cursor-pointer bg-(--bg-alt) text-(--accent) rounded-2xl flex flex-col gap-3 items-start justify-end font-medium h-35 p-4 border-2 border-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color] relative"
+              className="cursor-pointer bg-(--bg-alt) text-(--accent) rounded-2xl flex flex-col gap-3 items-start justify-end font-medium h-35 p-4 border border-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color] relative"
             >
               <input
                 type="radio"

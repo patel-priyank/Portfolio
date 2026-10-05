@@ -13,7 +13,7 @@ const Skills = async () => {
         return (
           <div
             key={index}
-            className="border-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-3 gap-4 p-4 justify-items-center"
+            className="border border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-3 gap-4 p-4 justify-items-center"
           >
             <Icon className="text-4xl text-(--text-muted) mt-1.5" weight="bold" />
 

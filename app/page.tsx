@@ -21,7 +21,7 @@ const HomePage = () => {
             height={512}
             preload
             sizes="320px"
-            className="border-2 border-(--text-muted) w-full mx-auto object-cover max-w-xs sm:h-80 rounded-3xl aspect-square sm:aspect-auto select-none"
+            className="border border-(--text-muted) w-full mx-auto object-cover max-w-xs sm:h-80 rounded-3xl aspect-square sm:aspect-auto select-none"
           />
 
           <div className="sm:col-span-2 flex flex-col gap-4 items-center sm:items-start">
