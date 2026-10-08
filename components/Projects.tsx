@@ -13,7 +13,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
       {projects.map((project, index) => (
         <div
           key={index}
-          className="border border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
+          className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
         >
           <div className="relative mb-1.5">
             <Image
@@ -22,19 +22,19 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
               width={512}
               height={512}
               sizes="(min-width: 640px) 456px, 100vw"
-              className="w-full object-cover rounded-lg select-none"
+              className="w-full object-cover rounded-lg select-none border-b border-(--text-muted)"
             />
 
             {project.under_development && (
-              <span className="absolute top-4 right-4 bg-(--bg-alt) text-(--text-muted) text-sm rounded-md px-2 py-1 pointer-events-none border border-(--text-muted) select-none font-medium">
+              <span className="absolute top-3.5 right-3.5 bg-(--bg-alt) text-(--text-muted) text-sm rounded-md px-3 py-1 pointer-events-none border border-b-2 border-(--text-muted) select-none">
                 Under development
               </span>
             )}
           </div>
 
-          <h3 className="text-xl font-semibold line-clamp-2">{project.title}</h3>
+          <h3 className="text-lg font-medium line-clamp-2">{project.title}</h3>
 
-          <p className="text-lg text-(--text-muted) line-clamp-5">{project.description}</p>
+          <p className="text-(--text-muted) line-clamp-5">{project.description}</p>
 
           <div className="flex gap-2 flex-wrap items-start mt-1.5">
             {project.links.map((link: { url: string; icon: string; label: string }, index: number) => {
@@ -46,7 +46,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2 items-center px-3 py-1.5 border border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+                  className="flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
                 >
                   {Icon && <Icon className="shrink-0" weight="bold" />}
                   {link.label}

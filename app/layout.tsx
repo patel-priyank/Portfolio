@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Arimo, Noto_Serif, Source_Code_Pro } from 'next/font/google';
+import { Inter, Lora, Source_Code_Pro } from 'next/font/google';
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -19,13 +19,13 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 const title = 'Priyank Patel';
 const description = 'Full stack developer. I build end-to-end web applications.';
 
-const arimo = Arimo({
-  variable: '--font-arimo',
+const inter = Inter({
+  variable: '--font-inter',
   subsets: ['latin']
 });
 
-const notoSerif = Noto_Serif({
-  variable: '--font-noto-serif',
+const lora = Lora({
+  variable: '--font-lora',
   subsets: ['latin']
 });
 
@@ -60,7 +60,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
   return (
     <html
       lang="en"
-      className={`${arimo.variable} ${notoSerif.variable} ${sourceCodePro.variable}`}
+      className={`${inter.variable} ${lora.variable} ${sourceCodePro.variable}`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[16px_16px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">

@@ -119,12 +119,12 @@ const ThemeDialog = () => {
       >
         <div className="sticky top-0 z-1100 bg-(--bg-alt) border-b-4 border-(--bg)">
           <div className="p-4 flex items-center justify-between">
-            <h2 className="text-2xl tracking-tighter">Theme</h2>
+            <h2 className="text-xl tracking-tighter">Theme</h2>
 
             <button
               onClick={close}
               aria-label="Close theme drawer"
-              className="cursor-pointer flex gap-2 items-center p-2.5 border border-(--accent) rounded-lg select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+              className="cursor-pointer flex gap-2 items-center p-2.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
             >
               <XIcon weight="bold" />
             </button>
@@ -135,7 +135,7 @@ const ThemeDialog = () => {
           {themes.map((theme, index) => (
             <label
               key={index}
-              className="cursor-pointer bg-(--bg-alt) text-(--accent) rounded-2xl flex flex-col gap-3 items-start justify-end font-medium h-35 p-4 border border-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color] relative"
+              className="cursor-pointer bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end h-35 p-4 border border-b-2 border-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color] relative"
             >
               <input
                 type="radio"
@@ -146,9 +146,9 @@ const ThemeDialog = () => {
                 className="absolute opacity-0"
               />
 
-              <CheckFatIcon weight="bold" className="mb-auto text-2xl hidden" />
+              <CheckFatIcon className="mb-auto text-2xl hidden" />
 
-              <div className="flex gap-1">
+              <div className="flex gap-1.5">
                 <div
                   className="rounded-full w-6 h-6 shadow-[0_0_0_1px_var(--text)]"
                   style={{ backgroundColor: theme.accent }}
@@ -162,7 +162,7 @@ const ThemeDialog = () => {
                 />
               </div>
 
-              <span className="truncate select-none">{theme.name}</span>
+              <span className="truncate">{theme.name}</span>
             </label>
           ))}
         </div>

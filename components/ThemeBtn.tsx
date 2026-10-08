@@ -8,7 +8,7 @@ const ThemeBtn = () => {
   return (
     <button
       onClick={open}
-      className="cursor-pointer flex gap-2 items-center px-3 py-1.5 border border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+      className="cursor-pointer flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
     >
       Theme
     </button>

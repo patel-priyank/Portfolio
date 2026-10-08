@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-arimo), sans-serif;
-  --font-serif: var(--font-noto-serif), serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-lora), serif;
   --font-mono: var(--font-source-code-pro), monospace;
 
   --default-transition-duration: 500ms;
@@ -30,6 +30,11 @@
   h3 {
     font-family: var(--font-serif);
   }
+}
+
+:root {
+  --accent-light: color-mix(in srgb, var(--accent) 15%, var(--bg));
+  --accent-dark: color-mix(in srgb, var(--accent) 65%, var(--bg));
 }
 
 body {

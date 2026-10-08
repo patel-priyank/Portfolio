@@ -16,17 +16,17 @@ const Experience = async () => {
       {experience.map((role, index) => (
         <div
           key={index}
-          className="border border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
+          className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
         >
-          <span aria-hidden="true" className="text-5xl font-mono tracking-tighter text-(--bg) select-none">
+          <span aria-hidden="true" className="text-5xl font-mono font-medium tracking-tighter text-(--bg) select-none">
             {new Date(role.start_date).getFullYear()}
           </span>
 
-          <h3 className="text-xl font-semibold line-clamp-2">{role.company}</h3>
+          <h3 className="text-lg font-medium line-clamp-2">{role.company}</h3>
 
-          <p className="text-lg text-(--text-muted) truncate">{role.job_title}</p>
+          <p className="text-(--text-muted) truncate">{role.job_title}</p>
 
-          <span className="text-(--text-muted)">
+          <span className="text-sm text-(--text-muted)">
             {formatDate(role.start_date)} - {role.end_date ? formatDate(role.end_date) : 'Present'}
           </span>
 
@@ -35,7 +35,7 @@ const Experience = async () => {
               href={role.company_linkedin_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-2 items-center px-3 py-1.5 border border-(--accent) rounded-lg font-medium select-none bg-(--bg-alt) text-(--accent) pointer-fine:hover:bg-(--accent) pointer-fine:hover:text-(--bg-alt) transition-[background-color,color]"
+              className="flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
             >
               <BuildingsIcon className="shrink-0" weight="bold" />
               View on LinkedIn
