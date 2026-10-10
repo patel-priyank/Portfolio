@@ -18,7 +18,10 @@ const Experience = async () => {
           key={index}
           className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
         >
-          <span aria-hidden="true" className="text-5xl font-mono font-medium tracking-tighter text-(--bg) select-none">
+          <span
+            aria-hidden="true"
+            className="text-5xl font-mono font-medium tracking-tighter text-(--bg) select-none text-shadow-[0_1px_0_var(--text-muted)]"
+          >
             {new Date(role.start_date).getFullYear()}
           </span>
 
