@@ -22,7 +22,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
               width={512}
               height={512}
               sizes="(min-width: 640px) 456px, 100vw"
-              className="w-full object-cover rounded-lg select-none border-b border-(--text-muted)"
+              className="w-full object-cover rounded-lg select-none"
             />
 
             {project.under_development && (

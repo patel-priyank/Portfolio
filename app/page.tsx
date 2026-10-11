@@ -1,4 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { PencilRulerIcon } from '@phosphor-icons/react/dist/ssr';
 
 import Contacts from '@/components/Contacts';
 import Experience from '@/components/Experience';
@@ -21,7 +24,7 @@ const HomePage = () => {
             height={512}
             preload
             sizes="320px"
-            className="border-b-2 border-(--text-muted) w-full mx-auto object-cover max-w-xs sm:h-80 rounded-3xl aspect-square sm:aspect-auto select-none"
+            className="w-full mx-auto object-cover max-w-xs sm:h-80 rounded-3xl aspect-square sm:aspect-auto select-none"
           />
 
           <div className="sm:col-span-2 flex flex-col gap-4 items-center sm:items-start">
@@ -38,6 +41,13 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Projects params={{ featured: true }} />
           </div>
+          <Link
+            href="/projects"
+            className="sm:col-span-2 bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-30 border border-b-2 border-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
+          >
+            <PencilRulerIcon className="text-2xl" />
+            See more things I’ve built
+          </Link>
         </section>
 
         <section className="flex flex-col gap-6">
