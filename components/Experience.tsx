@@ -25,11 +25,11 @@ const Experience = async () => {
             {new Date(role.start_date).getFullYear()}
           </span>
 
-          <h3 className="text-lg font-medium line-clamp-2">{role.company}</h3>
+          <h3 className="text-lg font-medium line-clamp-2 px-0.5">{role.company}</h3>
 
-          <p className="text-(--text-muted) truncate">{role.job_title}</p>
+          <p className="text-(--text-muted) truncate px-0.5">{role.job_title}</p>
 
-          <span className="text-sm text-(--text-muted)">
+          <span className="text-sm text-(--text-muted) px-0.5">
             {formatDate(role.start_date)} - {role.end_date ? formatDate(role.end_date) : 'Present'}
           </span>
 

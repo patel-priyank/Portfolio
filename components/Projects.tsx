@@ -15,7 +15,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
           key={index}
           className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
         >
-          <div className="relative mb-1.5">
+          <div className="relative">
             <Image
               src={project.image_url}
               alt=""
@@ -32,9 +32,9 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
             )}
           </div>
 
-          <h3 className="text-lg font-medium line-clamp-2">{project.title}</h3>
+          <h3 className="text-lg font-medium line-clamp-2 px-0.5">{project.title}</h3>
 
-          <p className="text-(--text-muted) line-clamp-5">{project.description}</p>
+          <p className="text-(--text-muted) line-clamp-5 px-0.5">{project.description}</p>
 
           <div className="flex gap-2 flex-wrap items-start mt-1.5">
             {project.links.map((link: { url: string; icon: string; label: string }, index: number) => {
