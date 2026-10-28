@@ -44,6 +44,7 @@ const SectionBtn = () => {
 
       btn.classList.toggle('opacity-0', !activeTitle);
       btn.classList.toggle('pointer-events-none', !activeTitle);
+      btn.toggleAttribute('aria-hidden', !activeTitle);
     };
 
     const handleClick = () => {

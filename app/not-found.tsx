@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { DetectiveIcon } from '@phosphor-icons/react/dist/ssr';
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <main className="max-w-5xl mx-auto p-4 pb-20 flex flex-col gap-6 items-center">
       <DetectiveIcon className="text-7xl text-(--text-muted)" />
@@ -25,4 +25,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;
