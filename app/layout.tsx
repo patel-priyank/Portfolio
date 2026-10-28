@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
+import RevealObserver from '@/components/RevealObserver';
 import ScrollToTopBtn from '@/components/ScrollToTopBtn';
 import ThemeDialog from '@/components/ThemeDialog';
 
@@ -77,6 +78,8 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
           <Navbar />
 
           {children}
+
+          <RevealObserver />
 
           <ScrollToTopBtn />
 

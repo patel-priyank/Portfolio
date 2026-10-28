@@ -18,6 +18,7 @@ const HomePage = () => {
       <main className="max-w-5xl mx-auto p-4 pb-20 flex flex-col gap-20">
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
           <Image
+            data-reveal
             src="/profile.jpg"
             alt="profile photo"
             width={512}
@@ -28,7 +29,7 @@ const HomePage = () => {
           />
 
           <div className="sm:col-span-2 flex flex-col gap-4 items-center sm:items-start">
-            <h1 className="text-2xl font-bold">Priyank Patel</h1>
+            <h1 data-reveal className="text-2xl font-bold">Priyank Patel</h1>
 
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 place-items-center">
               <Hero />
@@ -37,11 +38,12 @@ const HomePage = () => {
         </section>
 
         <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-center text-balance">I’ve built some things</h2>
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">I’ve built some things</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Projects params={{ featured: true }} />
           </div>
           <Link
+            data-reveal
             href="/projects"
             className="sm:col-span-2 bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-30 border border-b-2 border-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
           >
@@ -51,28 +53,28 @@ const HomePage = () => {
         </section>
 
         <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-center text-balance">Where I’ve worked</h2>
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">Where I’ve worked</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Experience />
           </div>
         </section>
 
         <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-center text-balance">I know a thing or two</h2>
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">I know a thing or two</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
             <Skills />
           </div>
         </section>
 
         <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-center text-balance">More of what I do</h2>
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">More of what I do</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Socials />
           </div>
         </section>
 
         <section className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold text-center text-balance">Reach out to me</h2>
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">Reach out to me</h2>
           <div className="grid grid-cols-2 gap-4">
             <Contacts />
           </div>

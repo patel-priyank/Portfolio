@@ -15,6 +15,7 @@ const Socials = async () => {
         return (
           <Link
             key={index}
+            data-reveal
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"

@@ -9,9 +9,12 @@ const ProjectsPage = () => {
       <Breadcrumbs params={{ crumbs: [{ url: '/', label: 'Home' }], current: 'Projects' }} />
 
       <section className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Projects</h1>
+        <h1 data-reveal className="text-2xl font-bold">Projects</h1>
 
-        <div className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl p-4 text-(--text-muted) flex flex-col gap-3">
+        <div
+          data-reveal
+          className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl p-4 text-(--text-muted) flex flex-col gap-3"
+        >
           <CubeIcon className="text-2xl shrink-0" />
 
           <p className="px-0.5">

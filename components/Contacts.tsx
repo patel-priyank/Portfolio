@@ -15,6 +15,7 @@ const Contacts = async () => {
         return (
           <Link
             key={index}
+            data-reveal
             href={contact.url}
             target="_blank"
             rel="noopener noreferrer"

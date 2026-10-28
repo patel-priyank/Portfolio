@@ -25,6 +25,7 @@ const Hero = () => {
       {highlights.map((highlight, index) => (
         <div
           key={index}
+          data-reveal
           className="border border-b-2 border-(--text-muted) w-full flex flex-col gap-2.5 max-w-3xs sm:max-w-none bg-(--bg-alt) rounded-2xl p-4 text-(--text-muted)"
         >
           <span className="mt-0.5">{highlight.icon}</span>

@@ -13,6 +13,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
       {projects.map((project, index) => (
         <div
           key={index}
+          data-reveal
           className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-4 gap-4 p-4"
         >
           <div className="relative">

@@ -59,6 +59,18 @@ main * {
   scroll-margin-block: calc(var(--nav-height) + 40px);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    &:not(.revealed, .reveal-skip) {
+      opacity: 0;
+    }
+
+    &.revealed {
+      animation: 500ms ease-out var(--reveal-delay, 0ms) reveal both;
+    }
+  }
+}
+
 .theme-dialog {
   --drawer-duration: 250ms;
 
@@ -118,6 +130,18 @@ main * {
 
   to {
     opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
