@@ -46,7 +46,7 @@ const Projects = async ({ params }: { params: { featured: boolean } }) => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
+                  className="flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
                 >
                   {Icon && <Icon className="shrink-0" weight="bold" />}
                   {link.label}

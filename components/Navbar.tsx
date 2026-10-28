@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link
           href="/"
           aria-label="Go Home"
-          className="cursor-pointer text-xl rounded-sm font-serif tracking-tighter pointer-fine:hover:underline"
+          className="cursor-pointer text-xl rounded-sm font-serif tracking-tighter hover:underline"
         >
           Hello!
         </Link>

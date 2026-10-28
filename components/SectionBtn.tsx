@@ -68,7 +68,7 @@ const SectionBtn = () => {
     <span
       ref={btnRef}
       aria-hidden="true"
-      className="fixed top-[calc(var(--nav-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-full select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
+      className="fixed top-[calc(var(--nav-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-full select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
     />
   );
 };

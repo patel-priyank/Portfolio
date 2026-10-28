@@ -22,7 +22,7 @@ const ThatsAllFolksBtn = () => {
 
   return (
     <button
-      className="cursor-pointer rounded-xs text-sm font-medium text-center text-(--accent) pointer-fine:hover:underline"
+      className="cursor-pointer rounded-xs text-sm font-medium text-center text-(--accent) hover:underline"
       onClick={handleClick}
     >
       That’s all Folks!

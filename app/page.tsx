@@ -43,7 +43,7 @@ const HomePage = () => {
           </div>
           <Link
             href="/projects"
-            className="sm:col-span-2 bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-30 border border-b-2 border-(--accent) pointer-fine:hover:bg-(--accent-dark) pointer-fine:hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
+            className="sm:col-span-2 bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-30 border border-b-2 border-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
           >
             <PencilRulerIcon className="text-2xl" />
             See more things I’ve built

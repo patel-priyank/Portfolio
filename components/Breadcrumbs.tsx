@@ -9,7 +9,7 @@ const Breadcrumbs = ({ params }: { params: { crumbs: { url: string; label: strin
     <div className="flex flex-wrap items-center gap-1 text-sm font-medium text-(--text-muted)">
       {params.crumbs.map((crumb, index) => (
         <React.Fragment key={index}>
-          <Link href={crumb.url} className="text-(--accent) pointer-fine:hover:underline rounded-xs">
+          <Link href={crumb.url} className="text-(--accent) hover:underline rounded-xs">
             {crumb.label}
           </Link>
 
