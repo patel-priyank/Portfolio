@@ -35,6 +35,8 @@ const sourceCodePro = Source_Code_Pro({
   subsets: ['latin']
 });
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title,
   description,
