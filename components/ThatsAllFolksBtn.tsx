@@ -22,6 +22,7 @@ const ThatsAllFolksBtn = () => {
 
   return (
     <button
+      data-reveal
       className="cursor-pointer rounded-xs text-sm font-medium text-center text-(--accent) hover:underline"
       onClick={handleClick}
     >
