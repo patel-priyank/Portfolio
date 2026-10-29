@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 const SectionBtn = () => {
-  const btnRef = useRef<HTMLSpanElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const btn = btnRef.current;
@@ -42,13 +42,16 @@ const SectionBtn = () => {
         btn.textContent = activeTitle.textContent?.trim() ?? '';
       }
 
+      btn.disabled = !activeTitle;
       btn.classList.toggle('opacity-0', !activeTitle);
       btn.classList.toggle('pointer-events-none', !activeTitle);
       btn.toggleAttribute('aria-hidden', !activeTitle);
     };
 
     const handleClick = () => {
-      activeSection?.scrollIntoView({ behavior: 'smooth' });
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      activeSection?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
     };
 
     update();
@@ -65,10 +68,11 @@ const SectionBtn = () => {
   }, []);
 
   return (
-    <span
+    <button
       ref={btnRef}
       aria-hidden="true"
       className="fixed top-[calc(var(--nav-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-full select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
+      disabled
     />
   );
 };

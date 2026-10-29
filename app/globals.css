@@ -21,8 +21,10 @@
     }
   }
 
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   h1,
@@ -61,7 +63,7 @@ main * {
 
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal] {
-    &:not(.revealed, .reveal-skip) {
+    &:not(.revealed, .reveal-skip, :focus-within) {
       opacity: 0;
     }
 
@@ -98,6 +100,16 @@ main * {
 
     &::backdrop {
       animation: var(--drawer-duration) fade-out both;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &[open] .themes-container {
+      animation-name: fade-in;
+    }
+
+    &.closing .themes-container {
+      animation-name: fade-out;
     }
   }
 
