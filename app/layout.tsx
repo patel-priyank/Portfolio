@@ -4,7 +4,6 @@ import { Inter, Lora, Source_Code_Pro } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import Loader from '@/components/Loader';
 import Navbar from '@/components/Navbar';
 import RevealObserver from '@/components/RevealObserver';
 import ScrollToTopBtn from '@/components/ScrollToTopBtn';
@@ -13,6 +12,8 @@ import ThemeDialog from '@/components/ThemeDialog';
 import { getThemes } from '@/actions/themes.actions';
 
 import ThemeProvider from '@/context/ThemeProvider';
+
+import { THEME_KEY, type Theme } from '@/lib/themes';
 
 import './globals.css';
 
@@ -37,6 +38,31 @@ const sourceCodePro = Source_Code_Pro({
 });
 
 export const revalidate = 3600;
+
+const themeScript = (themes: Theme[]) => `(() => {
+  const themes = ${JSON.stringify(themes).replace(/</g, '\\u003c')};
+  let saved = null;
+
+  try {
+    saved = localStorage.getItem('${THEME_KEY}');
+  } catch {}
+
+  const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const theme = themes.find(t => t.name === saved) ?? themes.find(t => (prefersDark ? t.is_default_dark : t.is_default_light));
+
+  if (!theme) {
+    return;
+  }
+
+  const rootStyle = document.documentElement.style;
+
+  rootStyle.setProperty('--bg', theme.bg);
+  rootStyle.setProperty('--bg-alt', theme.bg_alt);
+  rootStyle.setProperty('--text', theme.text);
+  rootStyle.setProperty('--text-muted', theme.text_muted);
+  rootStyle.setProperty('--accent', theme.accent);
+})();`;
 
 export const metadata: Metadata = {
   title,
@@ -66,14 +92,17 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
       lang="en"
       className={`${inter.variable} ${lora.variable} ${sourceCodePro.variable}`}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript(themes) }} />
+      </head>
+
       <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[16px_16px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
         <ThemeProvider themes={themes}>
           <noscript className="fixed inset-0 p-4 grid place-items-center bg-[#1a1a1a] text-[#fafafa] text-center text-balance z-1300">
             Enable JavaScript to view this site.
           </noscript>
-
-          <Loader />
 
           <Navbar />
 

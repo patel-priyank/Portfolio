@@ -40,20 +40,12 @@
 }
 
 body {
-  &:has(.loader:not(.complete)),
   &:has(.theme-dialog[open]) {
     overflow: hidden;
   }
 
   &.transitioning * {
     transition-duration: 0ms;
-  }
-}
-
-.loader {
-  &.complete {
-    opacity: 0;
-    pointer-events: none;
   }
 }
 

@@ -8,11 +8,9 @@ type ThemeContextValue = {
   themes: Theme[];
   currentTheme: string;
   isOpen: boolean;
-  isLoaderDismissed: boolean;
   open: () => void;
   close: () => void;
   setTheme: (name: string, userInitiated?: boolean) => void;
-  dismissLoader: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -30,7 +28,6 @@ export const useTheme = () => {
 const ThemeProvider = ({ themes, children }: { themes: Theme[]; children: React.ReactNode }) => {
   const [currentTheme, setCurrentTheme] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoaderDismissed, setIsLoaderDismissed] = useState(false);
 
   const setTheme = useCallback(
     (name: string, userInitiated = false) => {
@@ -49,11 +46,13 @@ const ThemeProvider = ({ themes, children }: { themes: Theme[]; children: React.
 
       document.body.classList.add('transitioning');
 
-      document.documentElement.style.setProperty('--bg', selected.bg);
-      document.documentElement.style.setProperty('--bg-alt', selected.bg_alt);
-      document.documentElement.style.setProperty('--text', selected.text);
-      document.documentElement.style.setProperty('--text-muted', selected.text_muted);
-      document.documentElement.style.setProperty('--accent', selected.accent);
+      const rootStyle = document.documentElement.style;
+
+      rootStyle.setProperty('--bg', selected.bg);
+      rootStyle.setProperty('--bg-alt', selected.bg_alt);
+      rootStyle.setProperty('--text', selected.text);
+      rootStyle.setProperty('--text-muted', selected.text_muted);
+      rootStyle.setProperty('--accent', selected.accent);
 
       setTimeout(() => {
         document.body.classList.remove('transitioning');
@@ -80,12 +79,8 @@ const ThemeProvider = ({ themes, children }: { themes: Theme[]; children: React.
 
   const close = useCallback(() => setIsOpen(false), []);
 
-  const dismissLoader = useCallback(() => setIsLoaderDismissed(true), []);
-
   return (
-    <ThemeContext.Provider
-      value={{ themes, currentTheme, isOpen, isLoaderDismissed, open, close, setTheme, dismissLoader }}
-    >
+    <ThemeContext.Provider value={{ themes, currentTheme, isOpen, open, close, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

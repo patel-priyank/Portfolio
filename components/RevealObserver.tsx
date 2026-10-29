@@ -4,17 +4,10 @@ import { useEffect } from 'react';
 
 import { usePathname } from 'next/navigation';
 
-import { useTheme } from '@/context/ThemeProvider';
-
 const RevealObserver = () => {
-  const { isLoaderDismissed } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!isLoaderDismissed) {
-      return;
-    }
-
     const observer = new IntersectionObserver(
       entries => {
         entries
@@ -39,7 +32,7 @@ const RevealObserver = () => {
     });
 
     return () => observer.disconnect();
-  }, [isLoaderDismissed, pathname]);
+  }, [pathname]);
 
   return null;
 };

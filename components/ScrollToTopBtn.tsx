@@ -42,7 +42,7 @@ const ScrollToTopBtn = () => {
   };
 
   return (
-    <div className="flex justify-center sticky bottom-6 mb-30 z-900 pointer-events-none">
+    <div className="flex justify-center sticky bottom-6 mb-20 z-900 pointer-events-none">
       <button
         ref={btnRef}
         aria-hidden="true"

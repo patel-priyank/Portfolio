@@ -10,7 +10,7 @@ const SHOW_DELAY = 2500;
 const VISIBLE_DURATION = 5000;
 
 const ThemeToast = () => {
-  const { currentTheme, isLoaderDismissed, isOpen, themes } = useTheme();
+  const { currentTheme, isOpen, themes } = useTheme();
 
   const [message, setMessage] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
@@ -53,7 +53,7 @@ const ThemeToast = () => {
   }, [themes, currentTheme, show]);
 
   useEffect(() => {
-    if (initialized.current || !isLoaderDismissed || !currentTheme) {
+    if (initialized.current || !currentTheme) {
       return;
     }
 
@@ -72,7 +72,7 @@ const ThemeToast = () => {
     }, SHOW_DELAY);
 
     return () => clearTimeout(timer);
-  }, [isLoaderDismissed, currentTheme, show, showMismatch]);
+  }, [currentTheme, show, showMismatch]);
 
   useEffect(() => {
     if (isOpen) {
