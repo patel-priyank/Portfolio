@@ -4,7 +4,7 @@ import { Inter, Lora, Source_Code_Pro } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import Navbar from '@/components/Navbar';
+import Header from '@/components/Header';
 import RevealObserver from '@/components/RevealObserver';
 import ScrollToTopBtn from '@/components/ScrollToTopBtn';
 import ThemeDialog from '@/components/ThemeDialog';
@@ -104,7 +104,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
             Enable JavaScript to view this site.
           </noscript>
 
-          <Navbar />
+          <Header />
 
           {children}
 

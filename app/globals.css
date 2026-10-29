@@ -50,7 +50,7 @@ body {
 }
 
 main * {
-  scroll-margin-block: calc(var(--nav-height) + 40px);
+  scroll-margin-block: calc(var(--header-height) + 40px);
 }
 
 @media (prefers-reduced-motion: no-preference) {

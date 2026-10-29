@@ -7,9 +7,9 @@ const SectionBtn = () => {
 
   useEffect(() => {
     const btn = btnRef.current;
-    const nav = document.querySelector('nav');
+    const header = document.querySelector('header');
 
-    if (!btn || !nav) {
+    if (!btn || !header) {
       return;
     }
 
@@ -18,7 +18,7 @@ const SectionBtn = () => {
     let activeSection: HTMLElement | null = null;
 
     const update = () => {
-      const navBottom = nav.getBoundingClientRect().bottom;
+      const headerBottom = header.getBoundingClientRect().bottom;
 
       let activeTitle: HTMLHeadingElement | null = null;
 
@@ -30,7 +30,7 @@ const SectionBtn = () => {
           continue;
         }
 
-        if (titleRect.bottom < navBottom && section.getBoundingClientRect().bottom > navBottom) {
+        if (titleRect.bottom < headerBottom && section.getBoundingClientRect().bottom > headerBottom) {
           activeTitle = title;
           break;
         }
@@ -71,7 +71,7 @@ const SectionBtn = () => {
     <button
       ref={btnRef}
       aria-hidden="true"
-      className="fixed top-[calc(var(--nav-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
+      className="fixed top-[calc(var(--header-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
       disabled
     />
   );

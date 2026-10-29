@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import NavHeightSetter from './NavHeightSetter';
+import HeaderHeightSetter from './HeaderHeightSetter';
 import ThemeBtn from './ThemeBtn';
 import ThemeToast from './ThemeToast';
 
-const Navbar = () => {
+const Header = () => {
   return (
-    <nav className="sticky top-0 z-1000 bg-(--bg-alt) border-b-4 border-(--bg)">
-      <NavHeightSetter />
+    <header className="sticky top-0 z-1000 bg-(--bg-alt) border-b-4 border-(--bg)">
+      <HeaderHeightSetter />
 
       <div className="max-w-5xl mx-auto p-4 flex items-center justify-between">
         <Link
@@ -23,8 +23,8 @@ const Navbar = () => {
           <ThemeToast />
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
-export default Navbar;
+export default Header;
