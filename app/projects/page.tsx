@@ -1,4 +1,4 @@
-import { CubeIcon } from '@phosphor-icons/react/dist/ssr';
+import { PenNibIcon } from '@phosphor-icons/react/dist/ssr';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Projects from '@/components/Projects';
@@ -15,9 +15,9 @@ const ProjectsPage = () => {
 
         <div
           data-reveal
-          className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl p-4 text-(--text-muted) flex flex-col gap-3"
+          className="border border-l-4 border-(--text-muted) bg-(--bg-alt) rounded-2xl rounded-tl-none p-4 text-(--text-muted) flex flex-col gap-3"
         >
-          <CubeIcon className="text-2xl shrink-0" />
+          <PenNibIcon className="text-2xl shrink-0" />
 
           <p className="px-0.5">
             A collection of everything I’ve built over the years, in one place. Some are big, some are tiny, some are
