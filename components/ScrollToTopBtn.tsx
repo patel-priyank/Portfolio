@@ -2,8 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 
-import { ArrowLineUpIcon } from '@phosphor-icons/react';
-
 const ScrollToTopBtn = () => {
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -46,10 +44,9 @@ const ScrollToTopBtn = () => {
       <button
         ref={btnRef}
         aria-hidden="true"
-        className="text-sm cursor-pointer flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
+        className="text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
         disabled
       >
-        <ArrowLineUpIcon className="shrink-0" weight="bold" />
         Scroll to top
       </button>
     </div>
