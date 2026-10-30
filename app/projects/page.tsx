@@ -9,7 +9,9 @@ const ProjectsPage = () => {
       <Breadcrumbs params={{ crumbs: [{ url: '/', label: 'Home' }], current: 'Projects' }} />
 
       <section className="flex flex-col gap-4">
-        <h1 data-reveal className="text-2xl font-bold">Projects</h1>
+        <h1 data-reveal className="text-2xl font-bold">
+          Projects
+        </h1>
 
         <div
           data-reveal
