@@ -19,13 +19,16 @@ const ProjectsPage = () => {
         >
           <PenNibIcon className="text-2xl shrink-0" />
 
+          <p className="px-0.5">A collection of everything I’ve built over the years, in one place.</p>
+
           <p className="px-0.5">
-            A collection of everything I’ve built over the years, in one place. Some are big, some are tiny, some are
-            actually useful, and some exist only because I thought they’d be fun to build. A handful scratch an itch so
-            niche that maybe three people on earth have it, myself included. You’ll find polished projects next to
-            half-finished experiments and weekend hacks that got out of hand, but each one taught me something. Feel
-            free to poke around, open the source, or reach out and ask about it.
+            Some are big, some are tiny, some are actually useful, and some exist only because I thought they’d be fun
+            to build. A handful scratch an itch so niche that maybe three people on earth have it, myself included.
+            You’ll find polished projects next to half-finished experiments and weekend hacks that got out of hand, but
+            each one taught me something.
           </p>
+
+          <p className="px-0.5">Feel free to poke around, open the source, or reach out and ask about it.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
