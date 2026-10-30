@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PencilRulerIcon } from '@phosphor-icons/react/dist/ssr';
+import { PencilRulerIcon, PenNibIcon } from '@phosphor-icons/react/dist/ssr';
 
 import Contacts from '@/components/Contacts';
 import Experience from '@/components/Experience';
 import Hero from '@/components/Hero';
+import Portfolios from '@/components/Portfolios';
 import Projects from '@/components/Projects';
 import SectionBtn from '@/components/SectionBtn';
 import Skills from '@/components/Skills';
@@ -89,6 +90,29 @@ const HomePage = () => {
           </h2>
           <div className="grid grid-cols-2 gap-4">
             <Contacts />
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-6">
+          <h2 data-reveal className="text-xl font-semibold text-center text-balance">
+            Since you’ve reached this far
+          </h2>
+          <div className="flex flex-col gap-4">
+            <div
+              data-reveal
+              className="border border-l-4 border-(--text-muted) bg-(--bg-alt) rounded-2xl rounded-tl-none p-4 text-(--text-muted) flex flex-col gap-3 sm:col-span-3"
+            >
+              <PenNibIcon className="text-2xl shrink-0" />
+
+              <p className="px-0.5">
+                I’ve redesigned this site a few times over the years, and every version is still online. These are my
+                older portfolios, left exactly as they were when I moved on to the next one.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Portfolios />
+            </div>
           </div>
         </section>
 
