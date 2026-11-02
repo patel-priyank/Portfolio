@@ -20,7 +20,7 @@ const Portfolios = async () => {
               aria-hidden="true"
               className="text-5xl font-mono font-medium tracking-tighter text-(--bg) select-none text-shadow-[0_1px_0_var(--text-muted)]"
             >
-              {(portfolios.length - index).toString().padStart(2, '0')}
+              {'v' + (portfolios.length - index).toString().padStart(2, '0')}
             </span>
 
             <p className="px-0.5">{portfolio.description}</p>
