@@ -2,15 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { isDarkTheme, THEMES_EXPLORED_KEY, THEME_MISMATCH_KEY } from '@/lib/themes';
+import { isDarkTheme, THEME_STARTER_KEY, THEMES_EXPLORED_KEY, THEME_MISMATCH_KEY } from '@/lib/themes';
 
 import { useTheme } from '@/context/ThemeProvider';
 
-const SHOW_DELAY = 2500;
+const SHOW_DELAY = 1500;
 const VISIBLE_DURATION = 5000;
 
 const ThemeToast = () => {
-  const { currentTheme, isOpen, themes } = useTheme();
+  const { currentThemeName, isDrawerOpen, themes } = useTheme();
 
   const [message, setMessage] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
@@ -23,68 +23,57 @@ const ThemeToast = () => {
     setMessage(toastMessage);
     setVisible(true);
 
-    if (hideTimer.current) {
-      clearTimeout(hideTimer.current);
-    }
+    if (hideTimer.current) clearTimeout(hideTimer.current);
 
     hideTimer.current = setTimeout(() => setVisible(false), VISIBLE_DURATION);
   }, []);
 
   const showMismatch = useCallback(() => {
-    if (localStorage.getItem(THEME_MISMATCH_KEY) === 'true') {
-      return;
-    }
+    if (localStorage.getItem(THEME_MISMATCH_KEY) === 'true') return;
 
-    const current = themes.find(theme => theme.name === currentTheme);
+    const currentTheme = themes.find(theme => theme.name === currentThemeName);
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (!current) {
-      return;
-    }
+    if (!currentTheme) return;
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (prefersDark !== isDarkTheme(current.bg)) {
+    if (prefersDark !== isDarkTheme(currentTheme.bg)) {
       const systemMode = prefersDark ? 'dark' : 'light';
 
       show(`Your system is in ${systemMode} mode. Try a ${systemMode} theme?`);
-
       localStorage.setItem(THEME_MISMATCH_KEY, 'true');
     }
-  }, [themes, currentTheme, show]);
+  }, [themes, currentThemeName, show]);
 
   useEffect(() => {
-    if (initialized.current || !currentTheme) {
-      return;
-    }
+    if (initialized.current || !currentThemeName) return;
 
     initialized.current = true;
 
     const timer = setTimeout(() => {
-      if (opened.current) {
-        return;
-      }
+      if (opened.current) return;
 
       if (localStorage.getItem(THEMES_EXPLORED_KEY) !== 'true') {
-        show('Check out more themes!');
+        const isStarter = localStorage.getItem(THEME_STARTER_KEY) === 'true';
+
+        show(isStarter ? `You got ${currentThemeName}! Try another?` : 'Check out more themes!');
+        localStorage.removeItem(THEME_STARTER_KEY);
       } else {
         showMismatch();
       }
     }, SHOW_DELAY);
 
     return () => clearTimeout(timer);
-  }, [currentTheme, show, showMismatch]);
+  }, [currentThemeName, show, showMismatch]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isDrawerOpen) {
       opened.current = true;
 
-      if (hideTimer.current) {
-        clearTimeout(hideTimer.current);
-      }
+      if (hideTimer.current) clearTimeout(hideTimer.current);
 
       setVisible(false);
     }
-  }, [isOpen]);
+  }, [isDrawerOpen]);
 
   return (
     <div
@@ -92,9 +81,7 @@ const ThemeToast = () => {
         visible ? 'mt-1 opacity-100' : 'mt-0 opacity-0'
       }`}
       onTransitionEnd={() => {
-        if (!visible) {
-          setMessage(null);
-        }
+        if (!visible) setMessage(null);
       }}
     >
       {message && (

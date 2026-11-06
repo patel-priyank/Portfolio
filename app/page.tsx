@@ -47,11 +47,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Projects params={{ featured: true }} />
           </div>
-          <Link
-            data-reveal
-            href="/projects"
-            className="sm:col-span-2 bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-30 border border-b-2 border-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
-          >
+          <Link data-reveal href="/projects" className="tile sm:col-span-2 h-30">
             <PencilRulerIcon className="text-2xl" />
             See more things I’ve built
           </Link>
@@ -95,7 +91,7 @@ const HomePage = () => {
 
         <section className="flex flex-col gap-6">
           <h2 data-reveal className="text-xl font-semibold text-center text-balance">
-            Since you’ve reached this far
+            Older portfolios
           </h2>
           <div className="flex flex-col gap-4">
             <div

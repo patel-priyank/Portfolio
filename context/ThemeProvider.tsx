@@ -2,14 +2,14 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-import { THEME_KEY, THEMES_EXPLORED_KEY, THEME_MISMATCH_KEY, type Theme } from '@/lib/themes';
+import { getThemeVars, THEME_KEY, THEMES_EXPLORED_KEY, THEME_MISMATCH_KEY, type Theme } from '@/lib/themes';
 
 type ThemeContextValue = {
   themes: Theme[];
-  currentTheme: string;
-  isOpen: boolean;
-  open: () => void;
-  close: () => void;
+  currentThemeName: string;
+  isDrawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
   setTheme: (name: string, userInitiated?: boolean) => void;
 };
 
@@ -18,52 +18,40 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export const useTheme = () => {
   const context = useContext(ThemeContext);
 
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
+  if (!context) throw new Error('useTheme must be used within a ThemeProvider');
 
   return context;
 };
 
 const ThemeProvider = ({ themes, children }: { themes: Theme[]; children: React.ReactNode }) => {
-  const [currentTheme, setCurrentTheme] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [currentThemeName, setCurrentThemeName] = useState('');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const setTheme = useCallback(
-    (name: string, userInitiated = false) => {
-      let selected = themes.find(t => t.name === name);
+    (themeName: string, userInitiated = false) => {
+      let selectedTheme = themes.find(t => t.name === themeName);
 
-      if (!selected) {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const fallback = themes.find(t => (prefersDark ? t.is_default_dark : t.is_default_light))?.name ?? '';
+      if (!selectedTheme) {
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const fallbackThemeName = themes.find(t => (prefersDark ? t.is_default_dark : t.is_default_light))?.name ?? '';
 
-        selected = themes.find(t => t.name === fallback);
+        selectedTheme = themes.find(t => t.name === fallbackThemeName);
       }
 
-      if (!selected) {
-        return;
-      }
+      if (!selectedTheme) return;
 
       document.body.classList.add('transitioning');
 
-      const rootStyle = document.documentElement.style;
+      Object.entries(getThemeVars(selectedTheme)).forEach(([name, value]) =>
+        document.documentElement.style.setProperty(name, value)
+      );
 
-      rootStyle.setProperty('--bg', selected.bg);
-      rootStyle.setProperty('--bg-alt', selected.bg_alt);
-      rootStyle.setProperty('--text', selected.text);
-      rootStyle.setProperty('--text-muted', selected.text_muted);
-      rootStyle.setProperty('--accent', selected.accent);
+      setTimeout(() => document.body.classList.remove('transitioning'));
 
-      setTimeout(() => {
-        document.body.classList.remove('transitioning');
-      });
+      setCurrentThemeName(selectedTheme.name);
+      localStorage.setItem(THEME_KEY, selectedTheme.name);
 
-      localStorage.setItem(THEME_KEY, selected.name);
-      setCurrentTheme(selected.name);
-
-      if (userInitiated) {
-        localStorage.removeItem(THEME_MISMATCH_KEY);
-      }
+      if (userInitiated) localStorage.removeItem(THEME_MISMATCH_KEY);
     },
     [themes]
   );
@@ -72,15 +60,15 @@ const ThemeProvider = ({ themes, children }: { themes: Theme[]; children: React.
     setTheme(localStorage.getItem(THEME_KEY) ?? '');
   }, [setTheme]);
 
-  const open = useCallback(() => {
+  const openDrawer = useCallback(() => {
+    setIsDrawerOpen(true);
     localStorage.setItem(THEMES_EXPLORED_KEY, 'true');
-    setIsOpen(true);
   }, []);
 
-  const close = useCallback(() => setIsOpen(false), []);
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
 
   return (
-    <ThemeContext.Provider value={{ themes, currentTheme, isOpen, open, close, setTheme }}>
+    <ThemeContext.Provider value={{ themes, currentThemeName, isDrawerOpen, openDrawer, closeDrawer, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );

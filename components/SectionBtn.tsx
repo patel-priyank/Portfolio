@@ -9,9 +9,7 @@ const SectionBtn = () => {
     const btn = btnRef.current;
     const header = document.querySelector('header');
 
-    if (!btn || !header) {
-      return;
-    }
+    if (!btn || !header) return;
 
     const titles = [...document.querySelectorAll<HTMLHeadingElement>('main > section h2')];
 
@@ -26,9 +24,7 @@ const SectionBtn = () => {
         const titleRect = title.getBoundingClientRect();
         const section = title.closest('section');
 
-        if (!section) {
-          continue;
-        }
+        if (!section) continue;
 
         if (titleRect.bottom < headerBottom && section.getBoundingClientRect().bottom > headerBottom) {
           activeTitle = title;
@@ -38,9 +34,7 @@ const SectionBtn = () => {
 
       activeSection = activeTitle?.closest('section') ?? null;
 
-      if (activeTitle) {
-        btn.textContent = activeTitle.textContent?.trim() ?? '';
-      }
+      if (activeTitle) btn.textContent = activeTitle.textContent?.trim() ?? '';
 
       btn.disabled = !activeTitle;
       btn.classList.toggle('opacity-0', !activeTitle);
@@ -50,7 +44,6 @@ const SectionBtn = () => {
 
     const handleClick = () => {
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       activeSection?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
     };
 
@@ -71,7 +64,7 @@ const SectionBtn = () => {
     <button
       ref={btnRef}
       aria-hidden="true"
-      className="fixed top-[calc(var(--header-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
+      className="button fixed top-[calc(var(--header-height)+8px)] inset-x-0 mx-auto w-fit z-950 text-sm opacity-0 pointer-events-none"
       disabled
     />
   );

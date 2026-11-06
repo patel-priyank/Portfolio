@@ -17,7 +17,7 @@ const Experience = async () => {
         <div
           key={index}
           data-reveal
-          className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
+          className="border border-(--text-muted)/30 bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-5 gap-4 p-4"
         >
           <span
             aria-hidden="true"
@@ -34,13 +34,8 @@ const Experience = async () => {
             {formatDate(role.start_date)} - {role.end_date ? formatDate(role.end_date) : 'Present'}
           </span>
 
-          <div className="flex gap-2 flex-wrap items-start mt-1.5">
-            <Link
-              href={role.company_linkedin_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
-            >
+          <div className="flex gap-x-2 gap-y-3 flex-wrap items-start mt-1.5">
+            <Link href={role.company_linkedin_url} target="_blank" rel="noopener noreferrer" className="button">
               <BuildingsIcon className="shrink-0" weight="bold" />
               View on LinkedIn
             </Link>

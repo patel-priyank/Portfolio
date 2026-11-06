@@ -19,7 +19,7 @@ const Socials = async () => {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end p-4 h-40 border border-b-2 border-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
+            className="tile h-40"
           >
             <Icon className="text-2xl" />
             {social.label}

@@ -4,12 +4,12 @@ import { useEffect, useRef } from 'react';
 
 import { CheckFatIcon, XIcon } from '@phosphor-icons/react/dist/ssr';
 
-import { isDarkTheme } from '@/lib/themes';
+import { getThemeVars } from '@/lib/themes';
 
 import { useTheme } from '@/context/ThemeProvider';
 
 const ThemeDialog = () => {
-  const { themes, currentTheme, isOpen, close, setTheme } = useTheme();
+  const { themes, currentThemeName, isDrawerOpen, closeDrawer, setTheme } = useTheme();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,25 +17,16 @@ const ThemeDialog = () => {
 
   const handleGridKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const keys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
-
-    if (!keys.includes(event.key)) {
-      return;
-    }
-
     const grid = gridRef.current;
 
-    if (!grid) {
-      return;
-    }
+    if (!keys.includes(event.key) || !grid) return;
 
     event.preventDefault();
 
     const inputs = [...grid.querySelectorAll<HTMLInputElement>('input[type="radio"]')];
     const currentIndex = inputs.findIndex(input => input === document.activeElement);
 
-    if (currentIndex === -1) {
-      return;
-    }
+    if (currentIndex === -1) return;
 
     const columns = getComputedStyle(grid).getPropertyValue('grid-template-columns').split(' ').length;
     const currentCol = currentIndex % columns;
@@ -65,11 +56,9 @@ const ThemeDialog = () => {
     const dialog = dialogRef.current;
     const container = containerRef.current;
 
-    if (!dialog || !container) {
-      return;
-    }
+    if (!dialog || !container) return;
 
-    if (isOpen) {
+    if (isDrawerOpen) {
       if (!dialog.open) {
         dialog.showModal();
         container.scrollTop = 0;
@@ -78,9 +67,7 @@ const ThemeDialog = () => {
       return;
     }
 
-    if (!dialog.open) {
-      return;
-    }
+    if (!dialog.open) return;
 
     const transform = getComputedStyle(container).transform;
     const currentX = transform === 'none' ? 0 : parseFloat(transform.split(', ')[4]);
@@ -97,19 +84,17 @@ const ThemeDialog = () => {
     container.addEventListener('animationend', handleAnimationEnd, { once: true });
 
     return () => container.removeEventListener('animationend', handleAnimationEnd);
-  }, [isOpen]);
+  }, [isDrawerOpen]);
 
   return (
     <dialog
       ref={dialogRef}
       onClick={event => {
-        if (event.target === dialogRef.current) {
-          close();
-        }
+        if (event.target === dialogRef.current) closeDrawer();
       }}
       onCancel={event => {
         event.preventDefault();
-        close();
+        closeDrawer();
       }}
       className="theme-dialog z-1050"
     >
@@ -121,11 +106,7 @@ const ThemeDialog = () => {
           <div className="p-4 flex items-center justify-between">
             <h2 className="text-xl tracking-tighter">Theme</h2>
 
-            <button
-              onClick={close}
-              aria-label="Close theme drawer"
-              className="cursor-pointer flex gap-2 items-center p-2.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
-            >
+            <button onClick={closeDrawer} aria-label="Close theme drawer" className="button p-2.5">
               <XIcon weight="bold" />
             </button>
           </div>
@@ -135,32 +116,25 @@ const ThemeDialog = () => {
           {themes.map((theme, index) => (
             <label
               key={index}
-              className="cursor-pointer bg-(--accent-light) text-(--accent) rounded-2xl select-none flex flex-col gap-3 items-start justify-end h-35 p-4 border border-b-2 border-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color] relative"
+              className="theme-card tile h-35 relative bg-(--bg-alt) text-(--accent)"
+              style={getThemeVars(theme) as React.CSSProperties}
             >
               <input
                 type="radio"
                 name="theme"
                 value={theme.name}
-                checked={currentTheme === theme.name}
+                checked={currentThemeName === theme.name}
                 onChange={() => setTheme(theme.name, true)}
                 className="absolute opacity-0"
               />
 
-              <CheckFatIcon className="mb-auto text-2xl hidden" />
+              <CheckFatIcon className="mb-auto text-2xl hidden" weight="bold" />
 
-              <div className="flex gap-1.5">
-                <div
-                  className="rounded-full w-6 h-6 shadow-[0_0_0_1px_var(--text)]"
-                  style={{ backgroundColor: theme.accent }}
-                />
-
-                <div
-                  className="rounded-full w-10 h-6 shadow-[0_0_0_1px_var(--text)]"
-                  style={{
-                    backgroundColor: `hsl(from ${theme.bg} h s calc(l * ${isDarkTheme(theme.bg) ? 3.25 : 0.85}))`
-                  }}
-                />
-              </div>
+              {theme.pattern_path_data && (
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="absolute top-3 right-3 size-12 fill-current">
+                  <path d={theme.pattern_path_data} fillRule="evenodd" />
+                </svg>
+              )}
 
               <span className="truncate">{theme.name}</span>
             </label>

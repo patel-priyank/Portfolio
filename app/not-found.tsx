@@ -15,10 +15,7 @@ const NotFoundPage = () => {
 
       <p className="text-sm text-(--text-muted) text-center text-balance">This is a portfolio, not a treasure hunt.</p>
 
-      <Link
-        href="/"
-        className="mt-2 flex gap-2 items-center px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color]"
-      >
+      <Link href="/" className="button mt-2">
         Go Home
       </Link>
     </main>

@@ -1,6 +1,10 @@
 'use client';
 
+import { useTheme } from '@/context/ThemeProvider';
+
 const ThatsAllFolksBtn = () => {
+  const { themes, currentThemeName } = useTheme();
+
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     const btnRect = e.currentTarget.getBoundingClientRect();
 
@@ -9,14 +13,33 @@ const ThatsAllFolksBtn = () => {
 
     const { default: confetti } = await import('canvas-confetti');
 
-    confetti({
-      particleCount: Math.random() * 100 + 150,
+    const theme = themes.find(t => t.name === currentThemeName);
+    const particleCount = Math.random() * 100 + 150;
+    const confettiOptions = {
       spread: Math.random() * 90 + 180,
       startVelocity: Math.random() * 10 + 25,
-      scalar: 0.75,
       ticks: 320,
       drift: Math.random() * 3 - 1.5,
-      origin: { x: x / window.innerWidth, y: y / window.innerHeight }
+      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+      colors: theme && [theme.accent, theme.text_muted]
+    };
+
+    if (!theme?.pattern_path_data) {
+      confetti({ ...confettiOptions, particleCount, scalar: 1 });
+      return;
+    }
+
+    confetti({
+      ...confettiOptions,
+      particleCount: particleCount * 0.75,
+      scalar: 1.5,
+      shapes: [confetti.shapeFromPath(theme.pattern_path_data)]
+    });
+
+    confetti({
+      ...confettiOptions,
+      particleCount: particleCount * 0.25,
+      scalar: 1
     });
   };
 

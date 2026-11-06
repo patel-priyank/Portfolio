@@ -13,7 +13,7 @@ import { getThemes } from '@/actions/themes.actions';
 
 import ThemeProvider from '@/context/ThemeProvider';
 
-import { THEME_KEY, type Theme } from '@/lib/themes';
+import { getThemeVars, isDarkTheme, THEME_KEY, THEME_STARTER_KEY, type Theme } from '@/lib/themes';
 
 import './globals.css';
 
@@ -39,30 +39,48 @@ const sourceCodePro = Source_Code_Pro({
 
 export const revalidate = 3600;
 
-const themeScript = (themes: Theme[]) => `(() => {
-  const themes = ${JSON.stringify(themes).replace(/</g, '\\u003c')};
-  let saved = null;
+const themeScript = (themes: Theme[]) => {
+  const scriptThemes = themes.map(theme => ({
+    name: theme.name,
+    isDark: isDarkTheme(theme.bg),
+    isStarter: !theme.is_default_light && !theme.is_default_dark,
+    isDefaultLight: theme.is_default_light,
+    isDefaultDark: theme.is_default_dark,
+    vars: getThemeVars(theme)
+  }));
 
-  try {
-    saved = localStorage.getItem('${THEME_KEY}');
-  } catch {}
+  return `(() => {
+    const themes = ${JSON.stringify(scriptThemes).replace(/</g, '\\u003c')};
+    let saved = null;
 
-  const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    try {
+      saved = localStorage.getItem('${THEME_KEY}');
+    } catch {}
 
-  const theme = themes.find(t => t.name === saved) ?? themes.find(t => (prefersDark ? t.is_default_dark : t.is_default_light));
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
 
-  if (!theme) {
-    return;
-  }
+    let theme = themes.find(t => t.name === saved);
 
-  const rootStyle = document.documentElement.style;
+    if (saved === null) {
+      const starters = themes.filter(t => t.isStarter && t.isDark === prefersDark);
 
-  rootStyle.setProperty('--bg', theme.bg);
-  rootStyle.setProperty('--bg-alt', theme.bg_alt);
-  rootStyle.setProperty('--text', theme.text);
-  rootStyle.setProperty('--text-muted', theme.text_muted);
-  rootStyle.setProperty('--accent', theme.accent);
-})();`;
+      theme = starters[Math.floor(Math.random() * starters.length)];
+
+      if (theme) {
+        try {
+          localStorage.setItem('${THEME_KEY}', theme.name);
+          localStorage.setItem('${THEME_STARTER_KEY}', 'true');
+        } catch {}
+      }
+    }
+
+    theme ??= themes.find(t => (prefersDark ? t.is_default_dark : t.is_default_light));
+
+    if (!theme) return;
+
+    Object.entries(theme.vars).forEach(([name, value]) => document.documentElement.style.setProperty(name, value));
+  })();`;
+};
 
 export const metadata: Metadata = {
   title,
@@ -98,7 +116,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <script dangerouslySetInnerHTML={{ __html: themeScript(themes) }} />
       </head>
 
-      <body className="min-h-dvh bg-(--bg) text-(--text) bg-center bg-fixed bg-size-[16px_16px] bg-[radial-gradient(circle,var(--bg-alt)_2px,transparent_2px)]">
+      <body className="min-h-dvh bg-(--bg) text-(--text)">
         <ThemeProvider themes={themes}>
           <noscript className="fixed inset-0 p-4 grid place-items-center bg-[#1a1a1a] text-[#fafafa] text-center text-balance z-1300">
             Enable JavaScript to view this site.

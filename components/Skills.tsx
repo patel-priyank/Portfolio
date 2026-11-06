@@ -14,7 +14,7 @@ const Skills = async () => {
           <div
             key={index}
             data-reveal
-            className="border border-b-2 border-(--text-muted) bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-3 gap-4 p-4 justify-items-center"
+            className="border border-(--text-muted)/30 bg-(--bg-alt) rounded-2xl grid grid-rows-subgrid row-span-3 gap-4 p-4 justify-items-center"
           >
             <Icon className="text-4xl text-(--text-muted) mt-1.5" />
 
@@ -22,10 +22,7 @@ const Skills = async () => {
 
             <div className="flex flex-col gap-3 w-full overflow-hidden mt-1.5">
               {category.skills.map((skill: string, index: number) => (
-                <span
-                  key={index}
-                  className="text-center px-4 py-3 rounded-lg bg-(--bg) text-(--text-muted) truncate border-b border-(--text-muted)"
-                >
+                <span key={index} className="text-center px-4 py-3 rounded-lg bg-(--bg) text-(--text-muted) truncate">
                   {skill}
                 </span>
               ))}

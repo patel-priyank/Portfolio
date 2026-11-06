@@ -8,9 +8,7 @@ const ScrollToTopBtn = () => {
   useEffect(() => {
     const btn = btnRef.current;
 
-    if (!btn) {
-      return;
-    }
+    if (!btn) return;
 
     const update = () => {
       const hidden = window.scrollY < 250;
@@ -35,18 +33,12 @@ const ScrollToTopBtn = () => {
 
   const handleClick = () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
   };
 
   return (
     <div className="flex justify-center sticky bottom-6 mb-20 z-900 pointer-events-none">
-      <button
-        ref={btnRef}
-        aria-hidden="true"
-        className="text-sm cursor-pointer px-3 py-1.5 border border-b-2 border-(--accent) rounded-lg select-none opacity-0 pointer-events-none bg-(--accent-light) text-(--accent) hover:bg-(--accent-dark) hover:text-(--bg) active:translate-y-0.5 transition-[background-color,color,opacity] duration-250"
-        disabled
-      >
+      <button ref={btnRef} aria-hidden="true" className="button text-sm opacity-0 pointer-events-none" disabled>
         Scroll to top
       </button>
     </div>
