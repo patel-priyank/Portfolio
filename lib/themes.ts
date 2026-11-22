@@ -30,7 +30,7 @@ const getPattern = (pathData: string) => {
 
 export const getThemeVars = (theme: Theme) => {
   let pattern = `radial-gradient(circle, ${theme.bg_alt} 6px, transparent 6px)`;
-  let size = '80px 80px';
+  let size = '56px 56px';
 
   if (theme.pattern_path_data) {
     pattern = getPattern(theme.pattern_path_data);
