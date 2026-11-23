@@ -63,7 +63,7 @@
       --press-duration: 60ms;
       --depth: 0px;
 
-      @apply translate-y-[3px];
+      @apply translate-y-0.75;
     }
 
     &:focus-visible {
@@ -71,7 +71,7 @@
     }
 
     &::after {
-      @apply content-[''] pointer-events-none absolute -inset-x-[5px] -top-[5px] -bottom-[calc(5px+var(--depth))] rounded-[calc(var(--ring-radius)+4px)] border-2 border-transparent;
+      @apply content-[''] pointer-events-none absolute -inset-x-1.25 -top-1.25 -bottom-[calc(5px+var(--depth))] rounded-[calc(var(--ring-radius)+4px)] border-2 border-transparent;
     }
 
     &:focus-visible::after,
@@ -178,7 +178,7 @@ main * {
     &:has(input:checked) {
       --depth: 0px;
 
-      @apply translate-y-[3px];
+      @apply translate-y-0.75;
 
       svg {
         @apply block;
