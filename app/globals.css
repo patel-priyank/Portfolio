@@ -71,7 +71,7 @@
     }
 
     &::after {
-      @apply pointer-events-none absolute -inset-x-[5px] -top-[5px] -bottom-[calc(5px+var(--depth))] rounded-[calc(var(--ring-radius)+4px)] border-2 border-transparent;
+      @apply content-[''] pointer-events-none absolute -inset-x-[5px] -top-[5px] -bottom-[calc(5px+var(--depth))] rounded-[calc(var(--ring-radius)+4px)] border-2 border-transparent;
     }
 
     &:focus-visible::after,
@@ -109,7 +109,7 @@
 
 body {
   &::before {
-    @apply fixed inset-0 -z-1 bg-(--bg-alt) mask-(--pattern) mask-center mask-size-(--size);
+    @apply content-[''] fixed inset-0 -z-1 bg-(--bg-alt) mask-(--pattern) mask-center mask-size-(--size);
   }
 
   &:has(.theme-dialog[open]) {
